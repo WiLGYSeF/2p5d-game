@@ -3,23 +3,16 @@ using UnityEngine.InputSystem;
 
 namespace Entity {
     public class PlayerController : Entity {
-        public bool IsGrounded {
-            get => _isGrounded;
-        }
-
         private Input.InputControls _controls;
 
         private Rigidbody _rb;
 
         private Vector3 _inputMove;
         private Vector3 _inputJump;
-        private bool _isGrounded = false;
-        private int _midAirJumps = 0;
-        private bool _jumping = false;
 
-        private int _maskGround;
+        protected override void Awake() {
+			base.Awake();
 
-        private void Awake() {
             _rb = GetComponent<Rigidbody>();
 
             _controls = new Input.InputControls();
@@ -28,8 +21,6 @@ namespace Entity {
             _controls.Player.Move.canceled += OnMove;
 
             _controls.Player.Jump.started += OnJump;
-
-            _maskGround = LayerMask.NameToLayer("Ground");
         }
 
         private void Update() {
@@ -69,30 +60,6 @@ namespace Entity {
                 _midAirJumps++;
             }
         }
-
-        private void OnCollisionEnter(Collision collision) {
-            if (collision.collider.gameObject.layer == _maskGround) {
-                Ground();
-            }
-        }
-
-        private void OnCollisionStay(Collision collision) {
-            if (collision.collider.gameObject.layer == _maskGround) {
-                Ground();
-            }
-        }
-
-        private void OnCollisionExit(Collision collision) {
-            if (collision.collider.gameObject.layer == _maskGround) {
-                _isGrounded = false;
-            }
-        }
-
-        private void Ground() {
-            _midAirJumps = 0;
-            _isGrounded = true;
-            _jumping = false;
-		}
 
         private void OnEnable() {
             _controls.Enable();
