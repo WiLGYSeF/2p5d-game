@@ -8,7 +8,15 @@
                 {
                     "name": "Move",
                     "type": "Button",
-                    "id": "a5ebf064-a6b7-4e82-9e0a-a1edcb43264f",
+                    "id": "d7c0f440-3696-4207-98c9-4fe4399c10f0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "cf5656f5-df51-40e1-8785-a6d0f021f5cd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -16,7 +24,7 @@
                 {
                     "name": "Fire",
                     "type": "Button",
-                    "id": "9b7bd7b6-5e63-4827-b2e7-ca03ac4e74f7",
+                    "id": "4638d5b9-9256-46b0-ac28-217a079dbc15",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -25,7 +33,7 @@
             "bindings": [
                 {
                     "name": "2D Vector",
-                    "id": "6ae025da-6dfc-45e7-87af-150e7fad10ef",
+                    "id": "b9ee0ae1-e166-4c80-90e3-78e735bbe018",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -36,55 +44,66 @@
                 },
                 {
                     "name": "up",
-                    "id": "4f282e58-10ee-44ab-9845-64563c76c096",
+                    "id": "114a0f51-1b56-4cca-a3b0-6e2cb6ff8954",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KeyboardMouse",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "075cd56b-4de5-4b22-b795-4403e605601c",
+                    "id": "2c85f3c2-d5ea-4e76-92ff-44e98a23d918",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KeyboardMouse",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "e846ac2c-9908-434f-bedc-e3c59388ba6e",
+                    "id": "3a89acdc-8e27-482e-99e5-e0bbf9cce82e",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KeyboardMouse",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "e09a620c-16d8-41c0-9ac2-c46e0efbcdb3",
+                    "id": "83321353-ff95-4b5e-96ba-96692610a908",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KeyboardMouse",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "e9ac6c97-cfd2-4ad9-b98b-289659be0c47",
+                    "id": "c686775f-a1a3-45d1-b7f4-94724b842cde",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "562d527d-bfad-48b5-865a-ccf5465f6469",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KeyboardMouse",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -92,5 +111,22 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "KeyboardMouse",
+            "bindingGroup": "KeyboardMouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
