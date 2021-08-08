@@ -11,7 +11,7 @@ namespace EntityNS {
         private Vector3 _inputJump;
 
         protected override void Awake() {
-			base.Awake();
+            base.Awake();
 
             _rb = GetComponent<Rigidbody>();
 
