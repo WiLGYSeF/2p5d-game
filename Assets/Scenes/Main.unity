@@ -714,7 +714,7 @@ MonoBehaviour:
   MovementSpeed: 3
   JumpSpeed: 10
   MidAirJumps: 0
-  Gravity: -20
+  Gravity: -30
 --- !u!54 &1420795748
 Rigidbody:
   m_ObjectHideFlags: 0
