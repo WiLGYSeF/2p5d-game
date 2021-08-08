@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Entity {
+namespace EntityNS {
     public class Entity : MonoBehaviour {
         public float MovementSpeed = 3f;
         public float JumpSpeed = 10f;

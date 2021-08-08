@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Entity {
+namespace EntityNS {
     public class PlayerController : Entity {
         private Input.InputControls _controls;
 
@@ -40,8 +40,6 @@ namespace Entity {
             }
 
             _rb.velocity = vel;
-
-            Debug.Log($"{_rb.velocity} {IsGrounded}");
         }
 
         void OnMove(InputAction.CallbackContext context) {
