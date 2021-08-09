@@ -38,8 +38,6 @@ namespace CameraNS {
             }
 
             transform.position = Vector3.Lerp(transform.position, _target, Time.deltaTime * CameraSpeed);
-            
-            Debug.Log($"{_target} {transform.position}");
         }
     }
 }
