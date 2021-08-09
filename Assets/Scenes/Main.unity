@@ -316,6 +316,8 @@ MonoBehaviour:
   CameraSpeed: 5
   LeftPercentage: 0.1
   RightPercentage: 0.1
+  UpPercentage: 0.1
+  DownPercentage: 0.1
 --- !u!1 &1151949866
 GameObject:
   m_ObjectHideFlags: 0
