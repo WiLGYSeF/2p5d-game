@@ -15,7 +15,7 @@ namespace EntityNS {
         }
         private bool _onEnvironment = false;
 
-        private int _maskEnvironment = LayerMask.NameToLayer("Environment");
+        private int _maskEnvironment;
 
         protected override void Awake() {
             base.Awake();
@@ -28,6 +28,8 @@ namespace EntityNS {
             _controls.Player.Move.canceled += OnMove;
 
             _controls.Player.Jump.started += OnJump;
+
+            _maskEnvironment = LayerMask.NameToLayer("Environment");
         }
 
         private void Update() {
