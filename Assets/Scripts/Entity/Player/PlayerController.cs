@@ -45,6 +45,13 @@ namespace EntityNS {
         void OnMove(InputAction.CallbackContext context) {
             Vector2 input = context.action.ReadValue<Vector2>();
             _inputMove = new Vector3(-input.y, 0, input.x);
+
+            if (_inputMove.z > 0) {
+                transform.rotation = Quaternion.AngleAxis(0f, Vector3.up);
+            } else
+            if (_inputMove.z < 0) {
+                transform.rotation = Quaternion.AngleAxis(180f, Vector3.up);
+            }
         }
 
         void OnJump(InputAction.CallbackContext context) {
