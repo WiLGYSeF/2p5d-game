@@ -29,6 +29,8 @@ namespace EntityNS {
 
             _controls.Player.Jump.started += OnJump;
 
+            _controls.Player.Fire.started += OnFire;
+
             _maskEnvironment = LayerMask.NameToLayer("Environment");
         }
 
@@ -75,6 +77,10 @@ namespace EntityNS {
             if (!IsGrounded) {
                 _midAirJumps++;
             }
+        }
+
+        void OnFire(InputAction.CallbackContext context) {
+            Inventory.ActiveWeapon.Use();
         }
 
         protected override void OnCollisionStay(Collision collision) {

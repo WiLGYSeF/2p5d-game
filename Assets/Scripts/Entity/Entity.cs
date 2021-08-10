@@ -9,6 +9,8 @@ namespace EntityNS {
         public int MidAirJumps = 0;
         public float Gravity = -30f;
 
+        public EquipmentInventory Inventory;
+
         public bool IsGrounded {
             get => _isGrounded;
         }
@@ -63,20 +65,9 @@ namespace EntityNS {
             healthBar.SetMaxHealth(maxHealh);
         }
 
-        // private void Update () {
-
-        // }
-
         private void TakeDamage( int damage ) {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
         }
-     
-    //    private void OnCollisionEnter(Collision collision) {
-    //        if ( debug ) {
-    //            Debug.Log("Player collided with object and took 20 damage.");
-    //        }
-    //        this.currentHealth -= 20;
-    //    }
     }
 }
