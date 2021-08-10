@@ -10,6 +10,11 @@ namespace EntityNS {
         private Vector3 _inputMove;
         private Vector3 _inputJump;
 
+        public bool OnEnvironment {
+            get => _onEnvironment;
+        }
+        private bool _onEnvironment = false;
+
         protected override void Awake() {
             base.Awake();
 
@@ -27,9 +32,11 @@ namespace EntityNS {
             Vector3 vel = _rb.velocity;
             Vector3 move = _inputMove * MovementSpeed;
 
-            vel.x = move.x;
+            if (IsGrounded || !OnEnvironment) {
+                vel.x = move.x;
+                vel.z = move.z;
+            }
             vel.y += Gravity * Time.deltaTime;
-            vel.z = move.z;
 
             if (!_jumping && IsGrounded) {
                 vel.y = 0;
@@ -63,6 +70,21 @@ namespace EntityNS {
             _jumping = true;
             if (!IsGrounded) {
                 _midAirJumps++;
+            }
+        }
+
+        protected override void OnCollisionStay(Collision collision) {
+            base.OnCollisionStay(collision);
+
+            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Environment")) {
+                _onEnvironment = true;
+            }
+        }
+        protected override void OnCollisionExit(Collision collision) {
+            base.OnCollisionExit(collision);
+
+            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Environment")) {
+                _onEnvironment = false;
             }
         }
 

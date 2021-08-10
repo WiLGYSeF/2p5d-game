@@ -18,24 +18,24 @@ namespace EntityNS {
 
         private int _maskGround;
 
-		protected virtual void Awake() {
-			_maskGround = LayerMask.NameToLayer("Ground");
-		}
+        protected virtual void Awake() {
+            _maskGround = LayerMask.NameToLayer("Ground");
+        }
 
-		private void OnCollisionEnter(Collision collision) {
+        protected virtual void OnCollisionEnter(Collision collision) {
             if (collision.collider.gameObject.layer == _maskGround) {
                 Ground();
                 _jumping = false;
             }
         }
 
-        private void OnCollisionStay(Collision collision) {
+        protected virtual void OnCollisionStay(Collision collision) {
             if (collision.collider.gameObject.layer == _maskGround) {
                 Ground();
             }
         }
 
-        private void OnCollisionExit(Collision collision) {
+        protected virtual void OnCollisionExit(Collision collision) {
             if (collision.collider.gameObject.layer == _maskGround) {
                 _isGrounded = false;
             }
@@ -44,6 +44,6 @@ namespace EntityNS {
         private void Ground() {
             _midAirJumps = 0;
             _isGrounded = true;
-		}
+        }
     }
 }
