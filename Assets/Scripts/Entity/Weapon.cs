@@ -18,7 +18,8 @@ namespace EntityNS {
                 return false;
             }
 
-            Instantiate(DamageCollider, DamageColliderSpawner.transform.position, Quaternion.identity);
+            DamageCollider dmgCollider = Instantiate(DamageCollider, DamageColliderSpawner.transform.position, Quaternion.identity);
+            dmgCollider.Init(this);
             _lastUse = Time.realtimeSinceStartup;
             return true;
         }

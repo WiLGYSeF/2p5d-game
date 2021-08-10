@@ -9,7 +9,10 @@ namespace EntityNS {
         public int MidAirJumps = 0;
         public float Gravity = -30f;
 
-        public EquipmentInventory Inventory;
+        public EquipmentInventory Inventory {
+            get => _inventory;
+        }
+        private EquipmentInventory _inventory;
 
         public bool IsGrounded {
             get => _isGrounded;
@@ -30,6 +33,7 @@ namespace EntityNS {
 
 		protected virtual void Awake() {
 			_maskGround = LayerMask.NameToLayer("Ground");
+            _inventory = GetComponent<EquipmentInventory>();
 		}
 
         protected virtual void OnCollisionEnter(Collision collision) {
