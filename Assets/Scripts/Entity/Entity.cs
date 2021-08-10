@@ -16,10 +16,10 @@ namespace EntityNS {
 
         private bool _isGrounded = false;
 
-        private int _maskGround;
+        private int _maskGround = LayerMask.NameToLayer("Ground");
 
         protected virtual void Awake() {
-            _maskGround = LayerMask.NameToLayer("Ground");
+
         }
 
         protected virtual void OnCollisionEnter(Collision collision) {

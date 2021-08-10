@@ -15,6 +15,8 @@ namespace EntityNS {
         }
         private bool _onEnvironment = false;
 
+        private int _maskEnvironment = LayerMask.NameToLayer("Environment");
+
         protected override void Awake() {
             base.Awake();
 
@@ -76,14 +78,14 @@ namespace EntityNS {
         protected override void OnCollisionStay(Collision collision) {
             base.OnCollisionStay(collision);
 
-            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Environment")) {
+            if (collision.collider.gameObject.layer == _maskEnvironment) {
                 _onEnvironment = true;
             }
         }
         protected override void OnCollisionExit(Collision collision) {
             base.OnCollisionExit(collision);
 
-            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Environment")) {
+            if (collision.collider.gameObject.layer == _maskEnvironment) {
                 _onEnvironment = false;
             }
         }
