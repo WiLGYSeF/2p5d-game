@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using EntityNS;
@@ -10,13 +8,13 @@ namespace CameraNS {
         public float CameraSpeed = 5f;
 
         [Range(0, 1)]
-        public float LeftPercentage;
+        public float LeftMarginPercentage;
         [Range(0, 1)]
-        public float RightPercentage;
+        public float RightMarginPercentage;
         [Range(0, 1)]
-        public float UpPercentage;
+        public float TopMarginPercentage;
         [Range(0, 1)]
-        public float DownPercentage;
+        public float BottomMarginPercentage;
 
         private Camera _camera;
         private Vector3 _target;
@@ -39,17 +37,17 @@ namespace CameraNS {
             float upPc = 1 - downPc;
 
             _target = transform.position;
-            if (leftPc < LeftPercentage) {
-                _target.z -= (LeftPercentage - leftPc) * Screen.width / point.z;
+            if (leftPc < LeftMarginPercentage) {
+                _target.z -= (LeftMarginPercentage - leftPc) * Screen.width / point.z;
             } else
-            if (rightPc < RightPercentage) {
-                _target.z += (RightPercentage - rightPc) * Screen.width / point.z;
+            if (rightPc < RightMarginPercentage) {
+                _target.z += (RightMarginPercentage - rightPc) * Screen.width / point.z;
             } else
-            if (upPc < UpPercentage) {
-                _target.x -= (UpPercentage - upPc) * Screen.height / point.z;
+            if (upPc < TopMarginPercentage) {
+                _target.x -= (TopMarginPercentage - upPc) * Screen.height / point.z;
             } else
-            if (downPc < DownPercentage) {
-                _target.x += (DownPercentage - downPc) * Screen.height / point.z;
+            if (downPc < BottomMarginPercentage) {
+                _target.x += (BottomMarginPercentage - downPc) * Screen.height / point.z;
             }
 
             transform.position = Vector3.Lerp(transform.position, _target, Time.deltaTime * CameraSpeed);
