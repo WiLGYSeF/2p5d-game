@@ -9,6 +9,9 @@ namespace EntityNS {
         public float Damage {
             get => _weapon.Damage;
         }
+        public int Team {
+            get => _weapon.Owner.Team;
+        }
 
         private Weapon _weapon;
         private float _awoken;

@@ -1047,6 +1047,7 @@ GameObject:
   - component: {fileID: 1243550313}
   - component: {fileID: 1243550312}
   - component: {fileID: 1243550316}
+  - component: {fileID: 1243550317}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -1146,6 +1147,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1243550317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243550311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989821577b27b45448b5a3b9e9a7cd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: 1
+  MaxHealh: 100
+  CurrentHealth: 0
+  HealthBarObject: {fileID: 0}
 --- !u!1 &1262108441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1402,10 @@ PrefabInstance:
       objectReference: {fileID: 289720787}
     - target: {fileID: 1043406251118258442, guid: e3c80b3e4a761384ea881349f37fdeb3, type: 3}
       propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 592874553}
+    - target: {fileID: 1043406251118258442, guid: e3c80b3e4a761384ea881349f37fdeb3, type: 3}
+      propertyPath: HealthBarObject
       value: 
       objectReference: {fileID: 592874553}
     - target: {fileID: 1043406251118258485, guid: e3c80b3e4a761384ea881349f37fdeb3, type: 3}

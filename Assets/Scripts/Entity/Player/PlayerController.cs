@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace EntityNS {
-    public class PlayerController : Entity {
+    public class PlayerController : Character {
         private Input.InputControls _controls;
 
         private Rigidbody _rb;
@@ -19,6 +19,8 @@ namespace EntityNS {
 
         protected override void Awake() {
             base.Awake();
+
+            Team = 0;
 
             _rb = GetComponent<Rigidbody>();
 
