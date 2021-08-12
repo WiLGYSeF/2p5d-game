@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using EventSystemNS;
+
 namespace EntityNS {
     public class Entity : MonoBehaviour {
         public int Team = 1;
@@ -27,6 +29,7 @@ namespace EntityNS {
 
         public void TakeDamage(float damage) {
             CurrentHealth -= damage;
+            EventManager.Dispatch(EntityDamageEvent.NAME, new EntityDamageEvent(this, damage));
             if (HealthBarObject) {
                 HealthBarObject.SetHealth(CurrentHealth);
             }
