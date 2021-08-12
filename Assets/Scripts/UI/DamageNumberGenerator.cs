@@ -1,14 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using EventSystemNS;
 
 namespace UINS {
-    public class DamageNumbers : MonoBehaviour {
+    public class DamageNumberGenerator : MonoBehaviour {
+        public Canvas CanvasObject;
+        public DamageNumber DamageNumberPrefab;
+
         private void OnEntityDamage(System.EventArgs args) {
             EntityDamageEvent evt = args as EntityDamageEvent;
-            Debug.Log($"{evt.Entity} {evt.Damage}");
+            DamageNumber num = Instantiate(
+                DamageNumberPrefab,
+                Camera.main.WorldToScreenPoint(evt.Entity.transform.position),
+                Quaternion.identity,
+                CanvasObject.transform
+            );
+            num.Text = evt.Damage.ToString();
         }
 
         private void OnEnable() {
