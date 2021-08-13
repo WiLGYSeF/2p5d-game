@@ -31,7 +31,7 @@ namespace EntityNS {
             CurrentHealth -= damage;
             EventManager.Dispatch(EntityDamageEvent.NAME, new EntityDamageEvent(this, damage));
             if (CurrentHealth <= 0) {
-                // Destroy(this.gameObject);
+                Destroy(this.gameObject);
             }
 
             if (HealthBarObject) {
