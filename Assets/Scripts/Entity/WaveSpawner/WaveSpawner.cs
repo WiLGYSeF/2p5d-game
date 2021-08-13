@@ -29,13 +29,20 @@ namespace EntityNS {
         private HashSet<Entity> _spawnedEntities = new HashSet<Entity>();
 
         private void Awake() {
-            EventManager.AddListener(EntityDeathEvent.NAME, OnEntityDeath);
-            EventManager.AddListener(PlayerTriggerEnterEvent.NAME, OnPlayerTrigger);
-
             Wave current = CurrentWave;
             if (current != null && current.Condition.onWaveDone) {
                 SpawnWave();
             }
+        }
+
+        private void OnEnable() {
+            EventManager.AddListener(EntityDeathEvent.NAME, OnEntityDeath);
+            EventManager.AddListener(PlayerTriggerEnterEvent.NAME, OnPlayerTrigger);
+        }
+
+        private void OnDisable() {
+            EventManager.RemoveListener(EntityDeathEvent.NAME, OnEntityDeath);
+            EventManager.RemoveListener(PlayerTriggerEnterEvent.NAME, OnPlayerTrigger);
         }
 
         public void SpawnWave() {
