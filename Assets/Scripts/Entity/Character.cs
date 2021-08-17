@@ -18,22 +18,43 @@ namespace EntityNS {
             get => _isGrounded;
         }
 
+        public bool OnEnvironment {
+            get => _onEnvironment;
+        }
+
         protected int _midAirJumps = 0;
         protected bool _jumping = false;
 
         private bool _isGrounded = false;
 
+        private bool _onEnvironment = false;
+
         private int _maskGround;
+        private int _maskEnvironment;
 
         protected override void Awake() {
             base.Awake();
 
-			_maskGround = LayerMask.NameToLayer("Ground");
             _inventory = GetComponent<EquipmentInventory>();
             if (_inventory && _inventory.ActiveWeapon) {
                 _inventory.ActiveWeapon.Owner = this;
             }
-		}
+
+            _maskGround = LayerMask.NameToLayer("Ground");
+            _maskEnvironment = LayerMask.NameToLayer("Environment");
+        }
+
+        protected virtual void Update() {
+            Vector3 vel = _rb.velocity;
+
+            vel.y += Gravity * Time.deltaTime;
+
+            if (!_jumping && IsGrounded) {
+                vel.y = 0;
+            }
+
+            _rb.velocity = vel;
+        }
 
         protected virtual void OnCollisionEnter(Collision collision) {
             if (collision.collider.gameObject.layer == _maskGround) {
@@ -50,17 +71,23 @@ namespace EntityNS {
             if (collision.collider.gameObject.layer == _maskGround) {
                 Ground();
             }
+            if (collision.collider.gameObject.layer == _maskEnvironment) {
+                _onEnvironment = true;
+            }
         }
 
         protected virtual void OnCollisionExit(Collision collision) {
             if (collision.collider.gameObject.layer == _maskGround) {
                 _isGrounded = false;
             }
+            if (collision.collider.gameObject.layer == _maskEnvironment) {
+                _onEnvironment = false;
+            }
         }
 
         private void Ground() {
             _midAirJumps = 0;
             _isGrounded = true;
-		}
+        }
     }
 }

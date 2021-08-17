@@ -13,7 +13,11 @@ namespace EntityNS {
         public float CurrentHealth;
         public HealthBar HealthBarObject;
 
+        protected Rigidbody _rb;
+
         protected virtual void Awake() {
+            _rb = GetComponent<Rigidbody>();
+
             CurrentHealth = MaxHealh;
             if (HealthBarObject) {
                 HealthBarObject.SetMaxHealth(MaxHealh);

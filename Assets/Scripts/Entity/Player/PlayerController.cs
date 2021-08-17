@@ -5,24 +5,13 @@ namespace EntityNS {
     public class PlayerController : Character {
         private Input.InputControls _controls;
 
-        private Rigidbody _rb;
-
         private Vector3 _inputMove;
         private Vector3 _inputJump;
-
-        public bool OnEnvironment {
-            get => _onEnvironment;
-        }
-        private bool _onEnvironment = false;
-
-        private int _maskEnvironment;
 
         protected override void Awake() {
             base.Awake();
 
             Team = 0;
-
-            _rb = GetComponent<Rigidbody>();
 
             _controls = new Input.InputControls();
             _controls.Player.Move.started += OnMove;
@@ -32,11 +21,9 @@ namespace EntityNS {
             _controls.Player.Jump.started += OnJump;
 
             _controls.Player.Fire.started += OnFire;
-
-            _maskEnvironment = LayerMask.NameToLayer("Environment");
         }
 
-        private void Update() {
+        protected override void Update() {
             Vector3 vel = _rb.velocity;
             Vector3 move = _inputMove * MovementSpeed;
 
@@ -83,21 +70,6 @@ namespace EntityNS {
 
         void OnFire(InputAction.CallbackContext context) {
             Inventory.ActiveWeapon.Use();
-        }
-
-        protected override void OnCollisionStay(Collision collision) {
-            base.OnCollisionStay(collision);
-
-            if (collision.collider.gameObject.layer == _maskEnvironment) {
-                _onEnvironment = true;
-            }
-        }
-        protected override void OnCollisionExit(Collision collision) {
-            base.OnCollisionExit(collision);
-
-            if (collision.collider.gameObject.layer == _maskEnvironment) {
-                _onEnvironment = false;
-            }
         }
 
         private void OnEnable() {
