@@ -22,8 +22,14 @@ namespace EntityNS {
             get => _onEnvironment;
         }
 
+        protected Vector3 _inputMove;
+        protected Vector3 _inputJump;
+
         protected int _midAirJumps = 0;
         protected bool _jumping = false;
+
+        private Vector3 _moveTo;
+        private bool _doMove;
 
         private bool _isGrounded = false;
 
@@ -46,14 +52,28 @@ namespace EntityNS {
 
         protected virtual void Update() {
             Vector3 vel = _rb.velocity;
+            Vector3 move = _inputMove * MovementSpeed;
 
+            if (IsGrounded || !OnEnvironment) {
+                vel.x = move.x;
+                vel.z = move.z;
+            }
             vel.y += Gravity * Time.deltaTime;
 
             if (!_jumping && IsGrounded) {
                 vel.y = 0;
             }
+            if (_inputJump != Vector3.zero) {
+                vel.y = _inputJump.y;
+                _inputJump = Vector3.zero;
+            }
 
             _rb.velocity = vel;
+        }
+
+        public void MoveTo(Vector3 pos) {
+            _moveTo = pos;
+            _doMove = true;
         }
 
         protected virtual void OnCollisionEnter(Collision collision) {

@@ -5,9 +5,6 @@ namespace EntityNS {
     public class PlayerController : Character {
         private Input.InputControls _controls;
 
-        private Vector3 _inputMove;
-        private Vector3 _inputJump;
-
         protected override void Awake() {
             base.Awake();
 
@@ -21,27 +18,6 @@ namespace EntityNS {
             _controls.Player.Jump.started += OnJump;
 
             _controls.Player.Fire.started += OnFire;
-        }
-
-        protected override void Update() {
-            Vector3 vel = _rb.velocity;
-            Vector3 move = _inputMove * MovementSpeed;
-
-            if (IsGrounded || !OnEnvironment) {
-                vel.x = move.x;
-                vel.z = move.z;
-            }
-            vel.y += Gravity * Time.deltaTime;
-
-            if (!_jumping && IsGrounded) {
-                vel.y = 0;
-            }
-            if (_inputJump != Vector3.zero) {
-                vel.y = _inputJump.y;
-                _inputJump = Vector3.zero;
-            }
-
-            _rb.velocity = vel;
         }
 
         void OnMove(InputAction.CallbackContext context) {
