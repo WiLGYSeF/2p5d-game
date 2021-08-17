@@ -51,6 +51,16 @@ namespace EntityNS {
         }
 
         protected virtual void Update() {
+            if (_doMove) {
+                Vector3 diff = (_moveTo - transform.position).normalized;
+                if (diff != Vector3.zero) {
+                    _inputMove.x = diff.x;
+                    _inputMove.z = diff.z;
+                } else {
+                    _doMove = false;
+                }
+            }
+
             Vector3 vel = _rb.velocity;
             Vector3 move = _inputMove * MovementSpeed;
 

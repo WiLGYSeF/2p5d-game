@@ -1393,21 +1393,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - Entities:
-    - entity: {fileID: 7237260621474575876, guid: de1b2dc4e3612f84b966057eb80d6a43, type: 3}
+    - entity: {fileID: 8111199178869713733, guid: de1b2dc4e3612f84b966057eb80d6a43, type: 3}
       transform: {fileID: 1100510812}
     Condition:
       trigger: {fileID: 0}
       onWaveDone: 1
   - Entities:
-    - entity: {fileID: 7237260621474575876, guid: de1b2dc4e3612f84b966057eb80d6a43, type: 3}
+    - entity: {fileID: 8111199178869713733, guid: de1b2dc4e3612f84b966057eb80d6a43, type: 3}
       transform: {fileID: 1017251941}
-    - entity: {fileID: 7237260621474575876, guid: de1b2dc4e3612f84b966057eb80d6a43, type: 3}
+    - entity: {fileID: 8111199178869713733, guid: de1b2dc4e3612f84b966057eb80d6a43, type: 3}
       transform: {fileID: 1945621837}
     Condition:
       trigger: {fileID: 0}
       onWaveDone: 1
   - Entities:
-    - entity: {fileID: 7237260621474575876, guid: de1b2dc4e3612f84b966057eb80d6a43, type: 3}
+    - entity: {fileID: 8111199178869713733, guid: de1b2dc4e3612f84b966057eb80d6a43, type: 3}
       transform: {fileID: 1100510812}
     Condition:
       trigger: {fileID: 486052424}

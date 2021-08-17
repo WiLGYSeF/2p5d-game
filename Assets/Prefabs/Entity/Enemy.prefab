@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7237260621474575872}
   - component: {fileID: 7237260621474575873}
   - component: {fileID: 7237260621474575877}
-  - component: {fileID: 7237260621474575876}
+  - component: {fileID: 8111199178869713733}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -113,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7237260621474575876
+--- !u!114 &8111199178869713733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,10 +122,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7237260621474575886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 989821577b27b45448b5a3b9e9a7cd86, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c70d0eb20d299946b742faa4fb9b902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Team: 1
   MaxHealh: 40
   CurrentHealth: 0
   HealthBarObject: {fileID: 0}
+  MovementSpeed: 3
+  JumpSpeed: 10
+  MidAirJumps: 0
+  Gravity: -30
